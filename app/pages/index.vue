@@ -82,7 +82,6 @@ const loadMore = async () => {
 	if (isLoading.value || !hasMore.value) return;
 
 	isLoading.value = true;
-	console.log("1", useRequestURL().origin);
 	try {
 		const response = await $fetch(`${useRequestURL().origin}/api/feed`, {
 			method: "GET",
