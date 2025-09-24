@@ -46,7 +46,7 @@ const filter = ref(["All", "Vacancies", "Workplace", "Food", "Design", "Cars", "
 // Initial API call using useFetch
 const { data: initialData, error: fetchError } = await useFetch("/popules/api/feed", {
 	query: {
-		offset: 0,
+		offset: offset.value,
 		limit: limit.value,
 		order_by: "desc",
 		visibility: 1,
@@ -84,8 +84,7 @@ const loadMore = async () => {
 	isLoading.value = true;
 
 	try {
-		const response = await $fetch("/popules/api/feed", {
-			baseURL: useRequestURL().origin,
+		const response = await $fetch("https://api.popules.com/api/feed", {
 			query: {
 				offset: offset.value,
 				limit: limit.value,
