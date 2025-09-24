@@ -85,6 +85,11 @@ const loadMore = async () => {
 	console.log("1", useRequestURL().origin);
 	try {
 		const response = await $fetch(`${useRequestURL().origin}/api/feed`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
 			query: {
 				offset: offset.value,
 				limit: limit.value,
