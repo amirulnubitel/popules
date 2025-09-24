@@ -53,6 +53,7 @@ const { data: initialData, error: fetchError } = await useFetch("/popules/api/fe
 		public: true,
 	},
 	server: true,
+	baseURL: useRequestURL().origin,
 	default: () => ({ data: [] }),
 });
 
@@ -84,6 +85,7 @@ const loadMore = async () => {
 
 	try {
 		const response = await $fetch("/popules/api/feed", {
+			baseURL: useRequestURL().origin,
 			query: {
 				offset: offset.value,
 				limit: limit.value,

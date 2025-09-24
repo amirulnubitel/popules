@@ -36,7 +36,7 @@ export default defineNuxtConfig({
 		rootId: "popules",
 		rootTag: "div",
 		teleportId: false,
-		buildAssetsDir: "/_nuxt/",
+		buildAssetsDir: "/_popules/",
 	},
 
 	// api route env
