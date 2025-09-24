@@ -43,7 +43,7 @@ export default defineNuxtConfig({
 	routeRules: {
 		"/popules/**": {
 			proxy: {
-				to: "https://api.popules.com/api/**",
+				to: "https://api.popules.com/**",
 			},
 		},
 	},
