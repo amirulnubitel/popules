@@ -6,6 +6,18 @@ export default defineNuxtConfig({
 		classSuffix: "",
 	},
 	css: ["~/assets/css/main.css"],
+
+	// SSR and hydration settings
+	ssr: true,
+
+	// Nitro configuration for better production
+	nitro: {
+		preset: "node-server",
+		experimental: {
+			wasm: false,
+		},
+	},
+
 	app: {
 		head: {
 			title: "Popules.com",
@@ -24,14 +36,14 @@ export default defineNuxtConfig({
 		rootId: "popules",
 		rootTag: "div",
 		teleportId: false,
-		buildAssetsDir: "/_popules/",
+		buildAssetsDir: "/_nuxt/",
 	},
 
 	// api route env
 	routeRules: {
 		"/popules/**": {
 			proxy: {
-				to: `https://api.popules.com/api/**`,
+				to: "https://api.popules.com/api/**",
 			},
 		},
 	},

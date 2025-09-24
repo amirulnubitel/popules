@@ -8,7 +8,7 @@
 				</NuxtLink>
 				<div class="hidden lg:flex flex-1">
 					<div class="relative inline-flex items-center w-full max-w-sm focus-within:max-w-full transition-all duration-300 ease-in-out mr-3">
-						<input type="text" placeholder="Search..." class="w-full rounded-full border-0 focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-3 py-2 text-base gap-2 bg-gray-100 dark:bg-gray-800 dark:text-gray-100 pe-11 transition-all duration-300" autocomplete="off" />
+						<input type="text" placeholder="Search..." class="w-full rounded-full border-0 focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-3 py-2 text-base gap-2 bg-gray-100 dark:bg-gray-800 dark:text-gray-100 pe-11" autocomplete="off" />
 						<span class="absolute inset-y-0 end-0 flex items-center pe-3">
 							<svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 text-gray-400 dark:text-gray-500 size-6" viewBox="0 0 24 24">
 								<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">

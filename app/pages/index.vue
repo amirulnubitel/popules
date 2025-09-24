@@ -44,7 +44,7 @@ const hasMore = ref(true);
 const filter = ref(["All", "Vacancies", "Workplace", "Food", "Design", "Cars", "Finance", "Lifestyle", "Travel", "Makeup", "Fitness"]);
 
 // Initial API call using useFetch
-const { data: initialData } = await useFetch("/popules/feed", {
+const { data: initialData, error: fetchError } = await useFetch("/popules/feed", {
 	query: {
 		offset: 0,
 		limit: limit.value,
@@ -52,16 +52,29 @@ const { data: initialData } = await useFetch("/popules/feed", {
 		visibility: 1,
 		public: true,
 	},
+	server: true,
+	default: () => ({ data: [] }),
 });
 
+// Handle fetch error
+if (fetchError.value) {
+	console.error("Initial fetch error:", fetchError.value);
+}
+
 // Set initial data
-if (initialData.value) {
+if (initialData.value && initialData.value.data) {
 	dataFeed.value = Array.isArray(initialData.value.data) ? initialData.value.data : [];
 	offset.value = limit.value; // Set offset to next batch
+} else {
+	dataFeed.value = [];
+}
+
+// Set loading to false after hydration
+onMounted(() => {
 	nextTick(() => {
 		loading.value = false;
 	});
-}
+});
 
 // Function to load more data
 const loadMore = async () => {
@@ -70,7 +83,7 @@ const loadMore = async () => {
 	isLoading.value = true;
 
 	try {
-		const { data: newData } = await $fetch("/popules/feed", {
+		const response = await $fetch("/popules/feed", {
 			query: {
 				offset: offset.value,
 				limit: limit.value,
@@ -79,6 +92,9 @@ const loadMore = async () => {
 				public: true,
 			},
 		});
+
+		// Handle both possible response structures
+		const newData = response?.data || response;
 
 		if (newData && Array.isArray(newData) && newData.length > 0) {
 			dataFeed.value = [...dataFeed.value, ...newData];
@@ -93,6 +109,7 @@ const loadMore = async () => {
 		}
 	} catch (error) {
 		console.error("Error fetching more data:", error);
+		// Don't set hasMore to false on error, allow retry
 	} finally {
 		isLoading.value = false;
 	}
