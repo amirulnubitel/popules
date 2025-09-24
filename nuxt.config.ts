@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+	compatibilityDate: "2025-09-24",
 	devtools: { enabled: false },
 	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode"],
 	colorMode: {
@@ -41,9 +42,9 @@ export default defineNuxtConfig({
 
 	// api route env
 	routeRules: {
-		"/popules/**": {
+		"/api/**": {
 			proxy: {
-				to: "https://api.popules.com/**",
+				to: "https://api.popules.com/api/**",
 			},
 		},
 	},
