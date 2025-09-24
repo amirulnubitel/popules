@@ -44,7 +44,7 @@ const hasMore = ref(true);
 const filter = ref(["All", "Vacancies", "Workplace", "Food", "Design", "Cars", "Finance", "Lifestyle", "Travel", "Makeup", "Fitness"]);
 
 // Initial API call using useFetch
-const { data: initialData, error: fetchError } = await useFetch("/api/feed", {
+const { data: initialData, error: fetchError } = await useFetch("/popules/api/feed", {
 	query: {
 		offset: 0,
 		limit: limit.value,
@@ -84,7 +84,7 @@ const loadMore = async () => {
 	isLoading.value = true;
 
 	try {
-		const response = await $fetch("/api/feed", {
+		const response = await $fetch("/popules/api/feed", {
 			baseURL: useRequestURL().origin,
 			query: {
 				offset: offset.value,
