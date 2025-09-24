@@ -13,7 +13,7 @@
 			</button>
 		</div>
 		<div class="grid gap-4 sm:gap-8 xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 h-full overflow-y-auto no-scrollbar pb-10 scroll-container">
-			<Card :data="dataFeed" :loading="loading" :limit="40" />
+			<Card :data="dataFeed" :loading="loading" :limit="15" />
 
 			<!-- Loading indicator for infinite scroll -->
 			<div v-if="isLoading" class="col-span-full flex justify-center py-4">
@@ -37,7 +37,7 @@ defineOptions({
 const loading = useState("loading");
 const dataFeed = ref([]);
 const offset = ref(0);
-const limit = ref(40);
+const limit = ref(15);
 const categories = ref("All");
 const isLoading = ref(false);
 const hasMore = ref(true);
@@ -83,7 +83,7 @@ const loadMore = async () => {
 
 	isLoading.value = true;
 	try {
-		const response = await $fetch(`${useRequestURL().origin}/api/feed`, {
+		const response = await $fetch(`https://api.popules.com/api/feed`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
