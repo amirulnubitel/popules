@@ -173,4 +173,4 @@ The project uses Tailwind CSS with custom configurations:
 ## 🔗 Links
 
 -  **Repository**: [https://github.com/amirulnubitel/popules](https://github.com/amirulnubitel/popules)
--  **Live Demo**: [https://math.gochanger.exposed](https://math.gochanger.exposed)
+-  **Live Demo**: [http://math.gochanger.exposed](http://math.gochanger.exposed)
