@@ -82,9 +82,9 @@ const loadMore = async () => {
 	if (isLoading.value || !hasMore.value) return;
 
 	isLoading.value = true;
-
+	console.log("1", useRequestURL().origin);
 	try {
-		const response = await $fetch("https://api.popules.com/api/feed", {
+		const response = await $fetch(`${useRequestURL().origin}/popules/api/feed`, {
 			query: {
 				offset: offset.value,
 				limit: limit.value,
